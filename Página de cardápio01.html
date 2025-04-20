@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Semanal</title>
+   <style>
+        body{
+            background-color: black;
+            color: white;
+            font: Normal 20px Arial;
+            padding: 50px;
+            text-align: center;
+        }
+        div#imagemcardapio{
+            max-width: 600px;
+            margin-top: 0 auto;
+            text-align: center;
+            display: none
+            
+           
+        }
+        #usuario{
+            
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        #visu{
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+
+        }
+        #refeicoes{
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        button{
+            background-color: yellow;
+            color: black;
+            width: 250px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        button:hover{
+            background-color: rgb(255, 104, 3);
+            
+        }
+        
+    </style> 
+</head>
+<body>
+    
+    <h1> Cardápio Semanal</h1>
+    
+    <div>
+        <select id="usuario">
+            <option value=""> Selecione o usuário </option>
+            <option value="filipe"> Filipe</option>
+            <option value="emily"> Emily</option>
+            <option value="ambos"> Ambos</option>
+        </select></br>
+     
+        <select id="visu">
+            <option value=""> Informe o tipo de visualização </option>
+            <option value="completa"> Completa </option>
+            <option value="diária"> Diária </option>
+        </select><br>
+   
+    
+        <select id="refeicoes">
+        <option value= ""> Selecione o dia da semana </option>
+        <option value="segunda"> Segunda </option>
+        <option value="terca"> Terça</option>
+        <option value="quarta"> Quarta </option>
+        <option value="quinta">Quinta</option>
+        <option value="sexta">Sexta </option>
+        <option value="sabado">Sábado </option>
+        </select><br>
+        
+    <button id="buscar" onclick="buscar()"> Avançar</button>
+    <center> <img id="imagemcardapio" src="" alt="imagem cardapio" > </center>
+    <script>
+        const gente = document.getElementById ('usuario')
+        const visualizacao= document.getElementById('visu')
+        const selectDia = document.getElementById ('refeicoes')
+        const imagem = document.getElementById ('imagemcardapio')
+
+        const imgCardapio = {
+            'segunda': 'imagens/segunda.jpeg',
+            'terca': 'imagens/terca.jpeg',
+            'quarta': 'imagens/quarta.jpeg',
+            'quinta': 'imagens/quinta.jpeg',
+            'sexta': 'imagens/sexta.jpeg',
+            'sabado': 'imagens/sabado.jpeg'
+        };
+        function visualizar(){
+            const ver = visu.value;
+            if(ver=='completa'){
+
+            }
+        }
+
+        function buscar(){
+            const diaSelecionado = selectDia.value;
+
+            if(diaSelecionado && imgCardapio[diaSelecionado]){
+                imagem.src = imgCardapio[diaSelecionado];
+                imagem.style.display = 'block';
+            }else{
+                imagem.style.display = 'none';
+            }
+        }
+       
+    </script>
+
+</body>
+</html>

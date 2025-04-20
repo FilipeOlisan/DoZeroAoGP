@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Select + Imagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #imagemExibida {
+            max-width: 300px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Selecione uma fruta</h2>
+    
+    <select id="seletorFrutas">
+        <option value="">Escolha uma fruta</option>
+        <option value="maca">Maçã</option>
+        <option value="banana">Banana</option>
+        <option value="laranja">Laranja</option>
+    </select>
+
+    <img id="imagemExibida" src="" alt="Imagem da fruta">
+
+    <script>
+        // Pegando os elementos do HTML
+        const seletor = document.getElementById('seletorFrutas');
+        const imagem = document.getElementById('imagemExibida');
+
+        // Objeto com os caminhos das imagens locais
+        const imagensFrutas = {
+            'maca': 'imagens/maca.jpg',    // Caminho relativo para a imagem da maçã
+            'banana': 'imagens/banana.jpg', // Caminho relativo para a imagem da banana
+            'laranja': 'imagens/laranja.jpg' // Caminho relativo para a imagem da laranja
+        };
+
+        // Adicionando o evento de mudança no select
+        seletor.addEventListener('change', function() {
+            const frutaSelecionada = this.value;
+            
+            if (frutaSelecionada && imagensFrutas[frutaSelecionada]) {
+                // Se uma fruta foi selecionada, mostra a imagem
+                imagem.src = imagensFrutas[frutaSelecionada];
+                imagem.style.display = 'block';
+            } else {
+                // Se nenhuma fruta foi selecionada, esconde a imagem
+                imagem.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Semanal</title>
+   <style>
+        .hidden{
+            display: none;
+        }
+        body{
+            background-color: black;
+            color: white;
+            font: Normal 20px Arial;
+            padding: 50px;
+            text-align: center;
+        }
+        div#imagemcardapio{
+            max-width: 600px;
+            margin-top: 0 auto;
+            text-align: center;
+            display: none
+            
+           
+        }
+        #usuario{
+            
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        #visu{
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+
+        }
+        #refeicoes{
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        button{
+            background-color: yellow;
+            color: black;
+            width: 250px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        button:hover{
+            background-color: rgb(255, 104, 3);
+            
+        }
+        
+    </style> 
+</head>
+<body>
+    
+    <h1> Cardápio Semanal</h1>
+    <div>
+        <label for="select1"></label> <br>
+        <select id="usuario" onchange="MostrarSelects()">
+            <option value=""> Selecione o usuário </option>
+            <option value="filipe"> Filipe</option>
+            <option value="emily"> Emily</option>
+            <option value="ambos"> Ambos</option>
+        </select></br>
+    </div>
+    <div id="select2Container" class="hidden">
+        <label for="select2"></label> <br>
+        <select id="visu" onchange ="MostrarSelect3()"> 
+            <option value=""> Informe o tipo de visualização </option>
+            <option value="completa"> Completa </option>
+            <option value="diária"> Diária </option>
+        </select><br>
+   </div>
+    
+   <div id="select3Container" class="hidden">
+        <label for="select3"></label> <br>
+            <select id="refeicoes" onchange="verificarBotao()">
+                <option value= ""> Selecione o dia da semana </option>
+                <option value="segunda"> Segunda </option>
+                <option value="terca"> Terça</option>
+                <option value="quarta"> Quarta </option>
+                <option value="quinta">Quinta</option>
+                <option value="sexta">Sexta </option>
+                <option value="sabado">Sábado </option>
+        </select>
+   </div>
+        
+    <button id="verificar" onclick="buscar()" class="hidden"> Avançar</button>
+
+    <div id="mostrarimagem" class="hidden">
+    <div <center> <img id="imagemcardapio" src="" alt="imagem cardapio" ></center> 
+    </div>
+
+   <script>
+        const gente = document.getElementById ('usuario')
+        const visualizacao= document.getElementById('visu')
+        const imagem = document.getElementById ('imagemcardapio')
+
+
+        function MostrarSelects(){
+            const select1 = document.getElementById ('usuario');
+            const select2Container = document.getElementById ('select2Container')
+            
+            if(select1.value){
+                select2Container.classList.remove('hidden');
+            }
+            else{
+                select2Container.classList.add('hidden');
+                document.getElementById('select2').selectedIndex = 0;
+            }
+           
+        }
+        function MostrarSelect3(){
+            const select2 = document.getElementById('visu');
+            const select3Container = document.getElementById ('select3Container');
+            const bt = document.getElementById ('verificar');
+            const select3 = document.getElementById ('refeicoes');
+
+            if (select2.value){
+                select3Container.classList.remove('hidden');  
+            } else {
+                select3Container.classList.add('hidden');
+                document.getElementById('refeicoes').selectedIndex = 0;
+                bt.classList.add('hidden');
+            }
+        }
+
+        function verificarBotao() {
+            const select3 = document.getElementById('refeicoes');
+            const bt = document.getElementById('verificar');
+            
+            if(select3.value) {
+                bt.classList.remove('hidden');
+            } else {
+                bt.classList.add('hidden');
+            }
+        }
+
+        const imgCardapio = {
+            'segunda': 'imagens/segunda.jpeg',
+            'terca': 'imagens/terca.jpeg',
+            'quarta': 'imagens/quarta.jpeg',
+            'quinta': 'imagens/quinta.jpeg',
+            'sexta': 'imagens/sexta.jpeg',
+            'sabado': 'imagens/sabado.jpeg'
+        };
+        function visualizar(){
+            const ver = visu.value;
+            if(ver=='completa'){
+
+            }
+        }
+
+        function buscar(){
+            const selectDia = document.getElementById ('refeicoes')
+            const diaSelecionado = selectDia.value;
+            const imagem = document.getElementById ('mostrarimagem')
+            
+
+
+            if(diaSelecionado && imgCardapio[diaSelecionado]){
+                imagem.src = imgCardapio[diaSelecionado];
+                imagem.style.display = 'block';
+                imagem.classList.remove('hidden');
+            }else{
+                imagem.style.display = 'none';
+            }
+        }
+       
+    </script>
+
+</body>
+</html>
